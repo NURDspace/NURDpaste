@@ -1,0 +1,16 @@
+version: 1
+handlers:
+  console:
+    class: logging.StreamHandler
+    formatter: brief
+    level: DEBUG
+    stream: ext://sys.stdout
+formatters:
+  brief:
+    format: '%(levelname)s: %(message)s'
+  full:
+    format: '%(asctime)s - %(levelname)s - %(message)s'
+loggers:
+  default:
+    level: DEBUG
+    handlers: [console]

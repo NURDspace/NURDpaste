@@ -1,0 +1,14 @@
+api:
+  bind_address: '0.0.0.0'
+  bind_port: 9000
+  max_size: 33554432
+  default_ttl: 43200
+  frontend: 'frontend.html'
+
+redis:
+  host: 'redis'
+  port: 6379
+
+logging:
+  logger: 'default'
+  config: 'logging.yml'
