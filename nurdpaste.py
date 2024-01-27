@@ -25,8 +25,6 @@ def load_and_validate_config(config_file: pathlib.Path) -> dict:
 
     assert type(config) == dict
     assert 'api' in config
-    assert 'tls' in config['api']
-    assert 'mqtt' in config
     assert 'redis' in config
     assert 'logging' in config
 
@@ -41,27 +39,6 @@ def load_and_validate_config(config_file: pathlib.Path) -> dict:
 
     assert 'default_ttl' in config['api']
     assert type(config['api']['default_ttl']) == int
-
-    assert 'ca_crt' in config['api']['tls']
-    assert type(config['api']['tls']['ca_crt']) == str
-
-    assert 'server_crt' in config['api']['tls']
-    assert type(config['api']['tls']['server_crt']) == str
-
-    assert 'server_key' in config['api']['tls']
-    assert type(config['api']['tls']['server_key']) == str
-
-    assert 'accepted_peers' in config['api']
-    assert type(config['api']['accepted_peers']) == list
-
-    assert 'server' in config['mqtt']
-    assert type(config['mqtt']['server']) == str
-
-    assert 'port' in config['mqtt']
-    assert type(config['mqtt']['port']) == int
-
-    assert 'topic' in config['mqtt']
-    assert type(config['mqtt']['topic']) == str
 
     assert 'host' in config['redis']
     assert type(config['redis']['host']) == str

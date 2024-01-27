@@ -1,0 +1,21 @@
+version: "2"
+services:
+  redis:
+    image: docker.io/library/redis:latest
+    container_name: redis
+    restart: always
+    networks:
+      - nurdpaste
+  nurdpaste:
+    image: nurdpaste:latest
+    container_name: nurdpaste
+    restart: always
+    ports:
+      - "9000:9000"
+    networks:
+      - nurdpaste
+    build: .
+
+networks:
+  nurdpaste:
+    name: nurdpaste
