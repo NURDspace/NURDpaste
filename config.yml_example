@@ -1,0 +1,18 @@
+api:
+  bind_address: '127.0.0.1'
+  bind_port: 9000
+  tls:
+    ca_crt: './tls/ca/ca.pem'
+    server_crt: './tls/doorcontrol.pem'
+    server_key: './tls/doorcontrol.key'
+  accepted_peers:
+    - 'test'
+
+mqtt:
+  topic: '/door/access'
+  server: 'localhost'
+  port: 1883
+
+logging:
+  logger: 'default'
+  config: 'logging.yml'

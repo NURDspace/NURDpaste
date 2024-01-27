@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link id="favicon" rel="shortcut icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAQAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQEBAAEBAQEAAQEBAQAAAQAAAQABAAABAAEAAAEAAAEAAAEAAQAAAQABAAABAAABAQEBAAEBAQEAAQEBAQAAAAAAAAAAAAAAAAAAAAAAAAEBAQEAAQEBAQABAQEBAAABAQEBAAEBAQEAAQAAAQAAAQEBAQABAQEBAAEAAAEAAAEBAQEAAQEBAQABAQEBAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQABAQEBAAEBAQEAAAEBAQEAAQAAAQABAQEBAAABAQEBAAEAAAEAAQEBAQAAAQEBAQABAQEBAAEBAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=">
+    <title>{{ title }}</title>
+    <style type="text/css">
+body {
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 12px;
+  background-color: #4c719e;
+}
+
+.paste {
+  margin: auto;
+  margin-top: 50px;
+  padding: 10px;
+  border: 4px solid #a59f80;
+  background-color: #c1c1c1;
+  width: 75%;
+}
+
+.content {
+  font-family: "Courier New", Courier, monospace;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #999999;
+  width: 98%;
+  resize: none;
+}
+
+.controls {
+  margin: 10px;
+  margin-left: 0px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.submit {
+  margin-left: 10px;
+  float: left;
+}
+
+.events {
+  overflow: hidden;
+  padding-top: 3px;
+  padding-left: 10px;
+}
+
+.footer {
+  position: absolute;
+  margin-top: 10px;
+  left: 0px;
+  right: 0px;
+  color: #a59f80;
+  text-align: center;
+}
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  background-color: #4c719e;
+}
+
+    </style>
+  </head>
+  <body onload="document.getElementById('content').focus()">
+  <div class="container" style='background:url("data:image/png;base64,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") no-repeat right bottom;'>
+    <div class="paste">
+      <form id="paste-form">
+        <textarea tabindex="1" class="content" id="content" columns=80 rows=30 spellcheck="false"></textarea>
+        <div class="controls">
+          <input id="paste" class="submit" type="button" tabindex="2" value="Create paste" />
+          <div id="events" class="events"></div>
+        </div>
+      </form>
+    </div>
+    <div id="footer" class="footer"></div>
+    <script>
+      function readableSize(size) {
+        var i = size == 0 ? 0 : Math.floor(Math.log(size) / Math.log(1024));
+        return (size / Math.pow(1024, i)).toFixed(2) * 1 + '' + ['B', 'kB', 'MB', 'GB', 'TB'][i];
+      }
+
+      function readableSeconds(raw_seconds) {
+        var sec_num = parseInt(raw_seconds, 10)
+        var hours   = Math.floor(sec_num / 3600)
+        var minutes = Math.floor(sec_num / 60) % 60
+        var seconds = sec_num % 60
+
+        response = ""
+        if (hours > 0) {
+          response += hours + "h"
+        }
+
+        if (minutes > 0) {
+          response += minutes + "m"
+        }
+
+        if (seconds > 0) {
+          response += seconds + "s"
+        }
+
+        return response
+      }
+
+      window.addEventListener("DOMContentLoaded", function () {
+        var max_size = {{ max_size }}
+        var ttl = {{ ttl }}
+
+        document.getElementById("content").value = ""
+
+        document.getElementById("footer").innerHTML = "Powered by {{ title }}. Maximum allowed size is " + readableSize(max_size) + "; Content will be deleted after " + readableSeconds(ttl) + "<br/>"
+        document.getElementById("footer").innerHTML += "Unleash the full power of {{ title }} by adding the following alias to your profile:<br/>"
+        document.getElementById("footer").innerHTML += "<tt>alias np='curl --data-binary @- " + document.location.origin + "'</tt>"
+
+        document.getElementById("paste").addEventListener("click", function () {
+          var content = document.getElementById("content").value
+          if (content.length > max_size) {
+            document.getElementById("events").innerHTML = "ERROR: you tried to store " + readableSize(content.length) + ", and the maximum allowed size is " + readableSize(max_size)
+            return
+          }
+          
+          var xhr = new XMLHttpRequest()
+          xhr.open("POST", "/", true)
+          xhr.send(content)
+          xhr.onload = (event) => {
+            if (xhr.status == 200) {
+              window.location.replace(xhr.responseURL)
+            } else {
+              document.getElementById("events").innerHTML = "ERROR: Something went wrong while storing your paste"
+            }
+          }
+          xhr.onerror = function() {
+            document.getElementById("events").innerHTML = "ERROR: Something went wrong while storing your paste"
+          }
+        })
+      })
+    </script>
+    </div>
+  </body>
+</html>
