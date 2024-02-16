@@ -22,6 +22,7 @@ class PasteView(MethodView):
         self._backend = parent._backend
         self._max_size = parent._max_size
         self._default_ttl = parent._default_ttl
+        self._base_url = parent._base_url
 
     def print_info(self, *args, **kwargs) -> None:
         self._parent.print_info(*args, **kwargs)
@@ -50,11 +51,11 @@ class PasteView(MethodView):
 
         index = secrets.token_urlsafe()
         storage_object = self._fernet.encrypt(json.dumps(raw_storage_object).encode('utf-8'))
-        object_url = f"{request.url_root}{index}"
+        object_url = f"{self._base_url}/{index}"
 
         self._backend.store(index, storage_object, self._default_ttl, size)
 
-        self.print_info(f"Stored {size} bytes worth of {mime_type} as {object_url} for {self._default_ttl} seconds")
+        self.print_info(f"Stored {size} bytes worth of {mime_type} as {index} for {self._default_ttl} seconds")
 
         if 'Origin' in request.headers:
             return redirect(object_url)

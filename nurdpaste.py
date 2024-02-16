@@ -37,8 +37,11 @@ def load_and_validate_config(config_file: pathlib.Path) -> dict:
     assert 'max_size' in config['api']
     assert type(config['api']['max_size']) == int
 
-    assert 'default_ttl' in config['api']
-    assert type(config['api']['default_ttl']) == int
+    assert 'frontend' in config['api']
+    assert type(config['api']['frontend']) == str
+
+    assert 'base_url' in config['api']
+    assert type(config['api']['base_url']) == str
 
     assert 'host' in config['redis']
     assert type(config['redis']['host']) == str
@@ -77,6 +80,7 @@ if __name__ == '__main__':
         logconfig_use=config['logging']['logger'],
         logconfig_file=config['logging']['config'],
         frontend=config['api']['frontend'],
+        base_url=config['api']['base_url'],
         backend=redis_backend,
     )
 

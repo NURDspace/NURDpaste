@@ -20,6 +20,7 @@ class NURDpasteAPI(LoggingClass):
     _bind_port: int = DEFAULT_PORT
     _max_size: int = DEFAULT_MAX_SIZE
     _frontend: str
+    _base_url: str
     _backend: RedisBackend
     _fernet: Fernet
 
@@ -31,6 +32,7 @@ class NURDpasteAPI(LoggingClass):
         'logconfig_use': str,
         'logconfig_file': pathlib.Path,
         'frontend': pathlib.Path,
+        'base_url': str,
         'backend': RedisBackend,
     }
 
@@ -56,6 +58,7 @@ class NURDpasteAPI(LoggingClass):
         self._max_size = kwargs['max_size']
         self._default_ttl = kwargs['default_ttl']
         self._frontend = kwargs['frontend']
+        self._base_url = kwargs['base_url']
         self._backend = kwargs['backend']
 
         LoggingClass.__init__(self,
