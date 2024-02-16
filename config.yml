@@ -4,6 +4,7 @@ api:
   max_size: 33554432
   default_ttl: 43200
   frontend: 'frontend.html'
+  base_url: 'https://paste.nurd.space'
 
 redis:
   host: 'redis'
