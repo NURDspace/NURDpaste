@@ -2,7 +2,7 @@ api:
   bind_address: '0.0.0.0'
   bind_port: 9000
   max_size: 33554432
-  default_ttl: 43200
+  default_ttl: 604800
   frontend: 'frontend.html'
   base_url: 'https://paste.nurd.space'
 
